@@ -1,5 +1,7 @@
 # PyZMQ: Python bindings for ØMQ
 
+[![Join the chat at https://gitter.im/swn1/pyzmq](https://badges.gitter.im/swn1/pyzmq.svg)](https://gitter.im/swn1/pyzmq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/zeromq/pyzmq.svg?branch=master)](https://travis-ci.org/zeromq/pyzmq)
 
 This package contains Python bindings for [ØMQ](http://www.zeromq.org).
@@ -10,7 +12,7 @@ The Cython backend used by CPython supports libzmq ≥ 2.1.4 (including 3.2.x an
 but the CFFI backend used by PyPy only supports libzmq ≥ 3.2.2 (including 4.x).
 
 For a summary of changes to pyzmq, see our
-[changelog](http://zeromq.github.io/pyzmq/changelog.html).
+[changelog](https://pyzmq.readthedocs.org/en/latest/changelog.html).
 
 ### ØMQ 3.x, 4.x
 
@@ -34,7 +36,7 @@ Python version of every example. We also have some information on our
 ## Downloading
 
 Unless you specifically want to develop PyZMQ, we recommend downloading
-the PyZMQ source code, eggs, or wheels from
+the PyZMQ source code or wheels from
 [PyPI](http://pypi.python.org/pypi/pyzmq). On Windows, you can get `.exe` installers
 from [Christoph Gohlke](http://www.lfd.uci.edu/~gohlke/pythonlibs/#pyzmq).
 
@@ -46,22 +48,33 @@ version 0.16 or later.
 
 For more detail on building pyzmq, see [our Wiki](https://github.com/zeromq/pyzmq/wiki/Building-and-Installing-PyZMQ).
 
-We build eggs and wheels for OS X and Windows, so you can get a binary on those platforms with either:
+We build wheels for OS X and Windows, so you can get a binary on those platforms with:
 
     pip install pyzmq
 
-or
-
-    easy_install pyzmq
-
 but compiling from source with `pip install pyzmq` should work in most environments.
+Especially on OS X, make sure you are using the latest pip (≥ 6), or it may not find the right wheels.
+
+If the wheel doesn't work for some reason, or you want to force pyzmq to be compiled
+(this is often preferable if you already have libzmq installed and configured the way you want it),
+you can force installation with:
+
+    pip install --no-use-wheel pyzmq
 
 When compiling pyzmq (e.g. installing with pip on Linux),
-it is generally recommended that zeromq be installed separately, via homebrew, apt, yum, etc.
+it is generally recommended that zeromq be installed separately,
+via homebrew, apt, yum, etc:
+
+    # Debian-based
+    sudo apt-get install libzmq3-dev
+
+    # RHEL-based
+    sudo yum install libzmq3-devel
+
 If this is not available, pyzmq will *try* to build libzmq as a Python Extension,
 though this is not guaranteed to work.
 
-To build pyzmq from the git repo (including release tags) requires Cython.
+Building pyzmq from the git repo (including release tags on GitHub) requires Cython.
 
 ## Old versions
 
